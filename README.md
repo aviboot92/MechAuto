@@ -1,1 +1,1 @@
-# react-sequelize-expresss-boilerPlate
+# MechAuto
