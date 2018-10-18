@@ -1,1 +1,1 @@
-# MechAuto is a Dream
+# react-sequelize-expresss-boilerPlate
