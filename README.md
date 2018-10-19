@@ -4,3 +4,4 @@
 * Logo
 * Navbar
 * AboutUs
+* Others
