@@ -3,7 +3,7 @@ var db = require("../../models");
 
 
 
-
+// So the route is /api/service/
 router.route("/")
     .get((req, res) => {
         console.log("in service");
