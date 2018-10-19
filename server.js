@@ -8,9 +8,15 @@ const PORT = process.env.PORT || 3001;
 // Requiring our models for syncing
 var db = require("./models");
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
+
+// Sets up the Express app to handle data parsing
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
