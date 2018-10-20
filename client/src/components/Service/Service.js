@@ -19,7 +19,6 @@ class Service extends Component{
       };
 
       render(){
-          console.log(this.state.listOf);
 
           return(
               <ul>
