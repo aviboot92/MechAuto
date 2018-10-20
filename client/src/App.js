@@ -1,17 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav";
-import Location from "./components/Location";
-import Service from "./components/Service";
+import AppRouter from "./routers/AppRouter.js"
 
 const App = () => (
-  <Router>
-    <div>
-      <Nav />
-      <Location/>
-      <Service/> 
-    </div>
-  </Router>
+<AppRouter/>
 );
 
 export default App;
