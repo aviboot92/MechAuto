@@ -1,34 +1,28 @@
-import React, { Component } from "react";
-import API from "../../utils/API";
+import React from "react";
 
-class Service extends Component{
-    state = {
-        listOf :[]
-    };
 
-    componentDidMount() {
-        this.loadServices();
-      }
-
-      loadServices = () => {
-        API.getService()
-          .then(res =>
-            this.setState({ listOf: res.data })
-          )
-          .catch(err => console.log(err));
-      };
-
-      render(){
+const Service = (props) =>{
+    const services = props.serviceCar;
+    let carSer = services[0].service;
+    let serPrice = services[0].price;
+    console.log(`Service: ${carSer} Price: ${serPrice}`);
 
           return(
-              <ul>
-                {this.state.listOf.map(item =>{
-                   return <li>{item.service}</li>
+            <div>
+            <h1>Please choose your <b>Service</b> from the list below </h1>
+            <ul>
+                {services.map(service =>{
+                    return (<li>
+                        <input type="checkbox" name={service.service} value={service.price}/> <span>{service.service.toUpperCase()} 
+                        </span>: <span> {service.price}</span><br/>
+                          </li>)    
                 }) 
                 }
-              </ul>
-          )
-      }
+          </ul>
+
+          </div>
+  );
 }
 
 export default Service;
+
