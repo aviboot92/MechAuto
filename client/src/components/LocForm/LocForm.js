@@ -3,7 +3,7 @@ import React from "react";
 const LocForm = (props) =>(
     <form className="form">
         <input
-            onChange={props.handleInputChange}
+            onChange={props.handleLocChange}
             value={props.value}
             name={props.name}
             type="number"
