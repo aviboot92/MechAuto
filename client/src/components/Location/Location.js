@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import LocForm from "../LocForm"
+import Nav from "../Nav";
+import Service from "../Service";
 
 
 class Location extends Component {
   state = {
     zipcode: "",
     isZipValid: false,
-    databaseZip:[]
+    databaseZip:[],
+    carMake:""
   };
 
   componentDidMount() {
     this.getDataBaseZip();
   }
 
+  handleCarChange = (e) =>{
+    this.setState({carMake: e.target.value});
+  }
   
   getDataBaseZip = () =>{
     API.getZipCode()
       .then(res =>{
         this.setState({databaseZip:res.data});
-        console.log(`State of databaseZip[] is ${this.state.databaseZip}`);
+        // console.log(`State of databaseZip[] is ${this.state.databaseZip}`);
       })
       .catch(err=> console.log(err));      
   };
@@ -35,7 +41,7 @@ class Location extends Component {
     });
   };
 
-  handleFormSubmit = event => {
+  handleLocSubmit = event => {
     event.preventDefault();
     this.searchZipCode(this.state.zipcode);
     this.setState({
@@ -72,13 +78,18 @@ class Location extends Component {
 
   render(){
     return(
-      <LocForm 
-        name ="zipcode" 
-        placeholder ="ZIPCODE" 
-        value={this.state.zipcode} 
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-    />
+      <div>
+          <Nav handleCarChange={this.handleCarChange} value={this.state.carMake}/>
+          <LocForm 
+            name ="zipcode" 
+            placeholder ="ZIPCODE" 
+            value={this.state.zipcode} 
+            handleInputChange={this.handleInputChange}
+            handleLocSubmit={this.handleLocSubmit}
+          />
+         {this.state.isZipValid ? (<Service/>) : (<h2 className="text-center"> Please enter a valid ZipCode</h2>)}
+    </div>
+
     ); 
   }
 

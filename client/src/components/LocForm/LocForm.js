@@ -11,9 +11,10 @@ const LocForm = (props) =>(
             placeholder={props.placeholder}
         />
         <button
-            onClick={props.handleFormSubmit}
+            id = "LocButton"
+            onClick={props.handleLocSubmit}
             className="btn btn-primary mt-3">
-            SUBMIT
+            ZIPCODE
       </button>
     </form>
 );
