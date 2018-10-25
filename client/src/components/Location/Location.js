@@ -3,6 +3,8 @@ import API from "../../utils/API";
 import LocForm from "../LocForm"
 import Nav from "../Nav";
 import Service from "../Service";
+import Csin from "../CSIN";
+import Thanks from "../Thankyou";
 
 
 class Location extends Component {
@@ -13,7 +15,8 @@ class Location extends Component {
     carMake:"",
     databaseAllServices :[],
     databaseCarMake:[],
-    iscarButtonClicked: false,   
+    iscarButtonClicked: false,
+    isServiceButtonClicked: false,  
     isOil: false,
     isFilter:false,
     isSpark:false,
@@ -25,7 +28,12 @@ class Location extends Component {
     isTire:false,
     isTrans:false,
     isAc:false,
-    isDetail:false
+    isDetail:false,
+    firstName: "",
+    lastName: "",
+    address:"",
+    email:"",
+    isForm:false
   };
 
   componentDidMount() {
@@ -196,6 +204,30 @@ getDataBaseZip = () =>{
     .catch(err=> console.log(err));      
 };
 
+onSerSubmit = (e) => {
+  e.preventDefault();
+  this.setState({isServiceButtonClicked: true});
+}
+
+handleInputChange = event => {
+  // Getting the value and name of the input which triggered the change
+  let value = event.target.value;
+  const name = event.target.name;
+
+  // Updating the input's state
+  this.setState({
+    [name]: value
+  });
+};
+
+handleFormSubmit = event => {
+  // Preventing the default behavior of the form submit (which is to refresh the page)
+  event.preventDefault();
+  this.setState({
+    isForm:true
+  });
+};
+
 
 
  
@@ -242,8 +274,20 @@ getDataBaseZip = () =>{
            toggleChangeTrans={this.toggleChangeTrans}
            toggleChangeAc={this.toggleChangeAc}
            toggleChangeDetail={this.toggleChangeDetail}
+           onSerSubmit = {this.onSerSubmit}
            />) 
            : (<h2 className="text-center"> Please enter a valid ZipCode</h2>)}
+
+           {this.state.isServiceButtonClicked ? <Csin
+            fNvalue={this.state.firstName}
+            lNvalue={this.state.lastName}
+            onChange={this.handleInputChange}
+            advalue={this.state.address}
+            emvalue={this.state.email}
+            onClick={this.handleFormSubmit}
+            /> : (<h2 className="text-center"> Please choose your Service</h2>)}
+            
+            {this.state.isForm ?<Thanks/>: <h1>Please give your information</h1>}
     </div>
 
     ); 
