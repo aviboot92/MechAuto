@@ -117,7 +117,7 @@ class Location extends Component {
     event.preventDefault();
     let car = this.state.carMake.toLowerCase();
     const carId = this.validateCarmakeId(car)[0].id;
-    console.log(carId);
+    // console.log(carId);
     this.getDataBaseServices(carId);
   };
 
@@ -218,8 +218,18 @@ getDataBaseZip = () =>{
 
          {this.state.isZipValid ? (<Service
            serviceCar = {this.state.databaseAllServices}
-           checked = {this.state.isOil}
-           checkArr = {this.state.serviceChecKBox}
+           checkedOil = {this.state.isOil}
+           checkedFilter = {this.state.isFilter}
+           checkedSpark = {this.state.isSpark}
+           checkedTune = {this.state.isTune}
+           checkedBattery = {this.state.isBattery}
+           checkedSteering = {this.state.isSteering}
+           checkedBrake = {this.state.isBrake}
+           checkedMuffler = {this.state.isMuffler}
+           checkedTire = {this.state.isTire}
+           checkedTrans = {this.state.isTrans}
+           checkedAc = {this.state.isAc}
+           checkedDetail = {this.state.isDetail}
            toggleChangeOil={this.toggleChangeOil}
            toggleChangeFilter={this.toggleChangeFilter}
            toggleChangeSpark={this.toggleChangeSpark}
