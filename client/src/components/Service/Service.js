@@ -38,7 +38,7 @@ const Service = (props) =>{
             <h1>Please choose your <b>Service</b> from the list below </h1>
             <hr />
             <form onSubmit = {props.onSerSubmit}>
-            <ul>
+            <ul className="list-group">
                 {services.map((service,i) =>{
                     return (<li>
                         <input type="checkbox" name={service.service} value={service.price}
