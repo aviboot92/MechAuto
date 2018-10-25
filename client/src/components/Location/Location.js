@@ -13,7 +13,19 @@ class Location extends Component {
     carMake:"",
     databaseAllServices :[],
     databaseCarMake:[],
-    iscarButtonClicked: false
+    iscarButtonClicked: false,   
+    isOil: false,
+    isFilter:false,
+    isSpark:false,
+    isTune:false,
+    isBattery:false,
+    isSteering:false,
+    isBrake:false,
+    isMuffler:false,
+    isTire:false,
+    isTrans:false,
+    isAc:false,
+    isDetail:false
   };
 
   componentDidMount() {
@@ -32,6 +44,66 @@ class Location extends Component {
       })
       .catch(err=> console.log(err));      
   };
+  toggleChangeOil = () => {
+    this.setState(prevState => ({
+      isOil: !prevState.isOil,
+    }));
+  }
+  toggleChangeFilter = () => {
+    this.setState(prevState => ({
+      isFilter: !prevState.isFilter,
+    }));
+  }
+  toggleChangeSpark = () => {
+    this.setState(prevState => ({
+      isSpark: !prevState.isSpark,
+    }));
+  }
+  toggleChangeTune = () => {
+    this.setState(prevState => ({
+      isTune: !prevState.isTune,
+    }));
+  }
+  toggleChangeBattery = () => {
+    this.setState(prevState => ({
+      isBattery: !prevState.isBattery,
+    }));
+  }
+  toggleChangeSteering = () => {
+    this.setState(prevState => ({
+      isSteering: !prevState.isSteering,
+    }));
+  }
+  toggleChangeBrake = () => {
+    this.setState(prevState => ({
+      isBrake: !prevState.isBrake,
+    }));
+  }
+  toggleChangeMuffler = () => {
+    this.setState(prevState => ({
+      isMuffler: !prevState.isMuffler,
+    }));
+  }
+  toggleChangeTire = () => {
+    this.setState(prevState => ({
+      isTire: !prevState.isTire,
+    }));
+  }
+  toggleChangeTrans = () => {
+    this.setState(prevState => ({
+      isTrans: !prevState.isTrans,
+    }));
+  }
+  toggleChangeAc = () => {
+    this.setState(prevState => ({
+      isAc: !prevState.isAc,
+    }));
+  }
+  toggleChangeDetail = () => {
+    this.setState(prevState => ({
+      isDetail: !prevState.isDetail,
+    }));
+  }
   getDataBaseZip = () =>{
     API.getZipCode()
       .then(res =>{
@@ -144,7 +216,24 @@ getDataBaseZip = () =>{
             handleLocChange={this.handleLocChange}
             handleLocSubmit={this.handleLocSubmit}/>
 
-         {this.state.isZipValid ? (<Service serviceCar = {this.state.databaseAllServices}/>) : (<h2 className="text-center"> Please enter a valid ZipCode</h2>)}
+         {this.state.isZipValid ? (<Service
+           serviceCar = {this.state.databaseAllServices}
+           checked = {this.state.isOil}
+           checkArr = {this.state.serviceChecKBox}
+           toggleChangeOil={this.toggleChangeOil}
+           toggleChangeFilter={this.toggleChangeFilter}
+           toggleChangeSpark={this.toggleChangeSpark}
+           toggleChangeTune={this.toggleChangeTune}
+           toggleChangeBattery={this.toggleChangeBattery}
+           toggleChangeSteering={this.toggleChangeSteering}
+           toggleChangeBrake={this.toggleChangeBrake}
+           toggleChangeMuffler={this.toggleChangeMuffler}
+           toggleChangeTire={this.toggleChangeTire}
+           toggleChangeTrans={this.toggleChangeTrans}
+           toggleChangeAc={this.toggleChangeAc}
+           toggleChangeDetail={this.toggleChangeDetail}
+           />) 
+           : (<h2 className="text-center"> Please enter a valid ZipCode</h2>)}
     </div>
 
     ); 
