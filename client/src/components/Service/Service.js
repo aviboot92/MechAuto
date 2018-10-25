@@ -31,11 +31,13 @@ const Service = (props) =>{
            props.checkedAc,
            props.checkedDetail
     ];
-    console.log(` ${togArr}`);
+    // console.log(` ${togArr}`);
 
           return(
-            <div>
+            <div className="container">
             <h1>Please choose your <b>Service</b> from the list below </h1>
+            <hr />
+            <form onSubmit = {props.onSerSubmit}>
             <ul>
                 {services.map((service,i) =>{
                     return (<li>
@@ -46,6 +48,14 @@ const Service = (props) =>{
                 }) 
                 }
           </ul>
+          <div className="form-group">
+            <button onClick = {props.onSerSubmit} className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+
+          </form>
+          
 
           </div>
   );
