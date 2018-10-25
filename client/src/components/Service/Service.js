@@ -43,7 +43,7 @@ const Service = (props) =>{
                     return (<li>
                         <input type="checkbox" name={service.service} value={service.price}
                         onChange={togArr[i]} checked = {chkArr[i]}/> <span>{service.service.toUpperCase()} 
-                        </span>: <span> {service.price}</span><br/>
+                        </span>: <span> ${service.price}</span><br/>
                           </li>)    
                 }) 
                 }
